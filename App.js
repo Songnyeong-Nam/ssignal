@@ -5,21 +5,51 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./screen/LoginScreen";
+import RegisterScreen from './screen/RegisterScreen'
+import HomeScreen from './screen/HomeScreen'
+import AddChatScreen from './screen/AddChatScreen'
 
 const Stack = createStackNavigator();
 const globalScreenOptions = {
-  headerStyle: {backgroundColor: '#fca99b'},
-  headerTitleStyle: {color: 'white'},
-  headerTintColor: "white"
+  headerStyle: { backgroundColor: '#fca99b' },
+  headerTitleStyle: { color: 'white' },
+  headerTintColor: "white",
 }
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={globalScreenOptions}>
-        <Stack.Screen options={{
-          title: 'Join us'
-        }} name="Login" component={LoginScreen} />
+      <Stack.Navigator 
+      // initialRouteName='Home'
+      screenOptions={globalScreenOptions}>
+        <Stack.Screen
+          options={{
+            headerTitleStyle: { alignSelf: 'center' },
+            title: 'Login'
+          }} 
+          name="Login" 
+          component={LoginScreen} />
+        <Stack.Screen
+          options={{
+            headerTitleStyle: { alignSelf: 'center' },
+            title: 'Join us'
+          }} 
+          name="Register" 
+          component={RegisterScreen} />
+          <Stack.Screen
+          name="Home" 
+          component={HomeScreen}
+          options={{
+            headerTitleStyle: { alignSelf: 'center' },
+            title: 'SSignal'
+          }}/>
+          <Stack.Screen
+          name="AddChat" 
+          component={AddChatScreen}
+          options={{
+            headerTitleStyle: { alignSelf: 'center' },
+            title: 'Chat'
+          }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
